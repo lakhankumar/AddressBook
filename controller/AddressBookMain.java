@@ -15,15 +15,18 @@ public class AddressBookMain {
         int choice = 0;
         final int exit = 10;
         while (choice != exit) {
-            System.out.println("Enter your choice \n1. add person\n2. print address book\n10. exit\n");
+            System.out.println("Enter your choice \n1. add person\n2. print address book\n3. edit contact\n10. exit\n");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
                     AddressBookService.getInstance().addPerson();
-                    AddressBookService.getInstance().newPerson();
+//                    AddressBookService.getInstance().newPerson();
                     break;
                 case 2:
                     AddressBookService.getInstance().display();
+                    break;
+                case 3:
+                    AddressBookService.getInstance().editContact();
                     break;
 
             }

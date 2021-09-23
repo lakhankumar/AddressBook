@@ -57,4 +57,65 @@ public class AddressBookService implements IAddressBook {
             System.out.println(person);
         }
     }
+
+    @Override
+    public void editContact() {
+        int choice = 1;
+        final int exit = 7;
+        boolean flag = false;
+        System.out.println("enter person first name you want to edit");
+        String firstName = scan.nextLine();
+        while (choice != exit) {
+            for (int i = 0; i < addressBook.size(); i++) {
+                if (addressBook.get(i).getFirstName().equalsIgnoreCase(firstName)) {
+                    flag=true;
+                    AddressBookModel person = addressBook.get(i);
+                    System.out.println("Hi  " + person.getFirstName());
+                    System.out.println("which field you want to edit\n1. Address\n2. City\n3. State\n4. Zipcode\n" +
+                            "5. Phone Number\n6. Email\n7. Exit");
+                    choice = scan.nextInt();
+                    switch (choice) {
+                        case 1:
+                            System.out.println("Hi Person " + person.getFirstName() + " Please edit your address");
+                            String address = scan.nextLine();
+                            scan.next();
+                            person.setAddress(address);
+                            break;
+                        case 2:
+                            System.out.println("Hi  " + person.getFirstName() + " Please edit your city");
+                            String city = scan.next();
+                            person.setCity(city);
+                            break;
+                        case 3:
+                            System.out.println("Hi " + person.getFirstName() + " Please edit your state");
+                            String state = scan.next();
+                            person.setState(state);
+                            break;
+                        case 4:
+                            System.out.println("Hi " + person.getFirstName() + " Please edit your zip");
+                            String zip = scan.next();
+                            person.setZip(zip);
+                            break;
+                        case 5:
+                            System.out.println("Hi " + person.getFirstName() + " Please edit your phone number");
+                            String phone = scan.next();
+                            person.setPhoneNumber(phone);
+                            break;
+                        case 6:
+                            System.out.println("Hi " + person.getFirstName() + " Please edit your email address");
+                            String email = scan.next();
+                            person.setEmail(email);
+                            break;
+                    }
+                }
+            }
+            if (flag==false){
+                System.out.println("Person details are invalid");
+                break;
+            }
+            else {
+                System.out.println("your contact details have been successfully updated");
+            }
+        }
+    }
 }
