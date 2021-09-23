@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class AddressBookService implements IAddressBook {
 
-    private static AddressBookService instance;
+    private static IAddressBook instance;
     private ArrayList<AddressBookModel> addressBook = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
 
     private AddressBookService() {
     }
 
-    public static synchronized AddressBookService getInstance() {
+    public static synchronized IAddressBook getInstance() {
         if (instance == null) {
             instance = new AddressBookService();
         }
@@ -23,13 +23,6 @@ public class AddressBookService implements IAddressBook {
 
     @Override
     public void addPerson() {
-        AddressBookModel person1 = new AddressBookModel("lakhan","kumar","attapur",
-                                    "hyderabad","telangana","500048","905904xxx","lakhan@gmail.com");
-        addressBook.add(person1);
-    }
-
-    @Override
-    public void newPerson() {
         System.out.println("Enter the Firstname: ");
         String firstName = scan.nextLine();
         System.out.println("Enter the Lastname: ");
@@ -121,4 +114,24 @@ public class AddressBookService implements IAddressBook {
             }
         }
     }
+
+    @Override
+    public void deleteContact() {
+        boolean flag = false;
+        System.out.println("enter the person name you want to delete");
+        String firstName = scan.next();
+        for (int i = 0; i < addressBook.size(); i++) {
+            if (addressBook.get(i).getFirstName().equalsIgnoreCase(firstName)){
+                flag = true;
+                addressBook.remove(i);
+            }
+        }
+        if (flag==false){
+            System.out.println("Person details are invalid");
+        }
+        else {
+            System.out.println("your contact details have been successfully deleted");
+        }
+    }
+
 }
