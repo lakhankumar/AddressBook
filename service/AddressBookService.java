@@ -83,12 +83,14 @@ public class AddressBookService implements IAddressBook {
                             break;
                         case 2:
                             System.out.println("Hi  " + person.getFirstName() + " Please edit your city");
-                            String city = scan.next();
+                            String city = scan.nextLine();
+                            scan.next();
                             person.setCity(city);
                             break;
                         case 3:
                             System.out.println("Hi " + person.getFirstName() + " Please edit your state");
-                            String state = scan.next();
+                            String state = scan.nextLine();
+                            scan.next();
                             person.setState(state);
                             break;
                         case 4:
@@ -98,7 +100,8 @@ public class AddressBookService implements IAddressBook {
                             break;
                         case 5:
                             System.out.println("Hi " + person.getFirstName() + " Please edit your phone number");
-                            String phone = scan.next();
+                            String phone = scan.nextLine();
+                            scan.next();
                             person.setPhoneNumber(phone);
                             break;
                         case 6:

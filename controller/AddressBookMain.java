@@ -20,7 +20,7 @@ public class AddressBookMain {
             switch (choice) {
                 case 1:
                     AddressBookService.getInstance().addPerson();
-//                    AddressBookService.getInstance().newPerson();
+                    AddressBookService.getInstance().newPerson();
                     break;
                 case 2:
                     AddressBookService.getInstance().display();
